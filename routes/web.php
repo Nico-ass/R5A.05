@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TrackController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
@@ -17,6 +18,11 @@ Route::group(['middleware' => ['guest']], function () {
     Route::get('/signup/terms', [RegisterController::class, 'terms'])->name('terms');
     Route::get('/signup/account', [RegisterController::class, 'account'])->name('account');
     Route::post('/signup/account', [RegisterController::class, 'register'])->name('register');
+
+    // Track
+    Route::get('/track', [TrackController::class, 'show'])->name('tracks.index');
+    Route::post('/track', [TrackController::class, 'store'])->name('tracks.store');
+
 });
 
 Route::group(['middleware' => ['auth']], function () {
@@ -32,4 +38,8 @@ Route::group(['middleware' => ['auth']], function () {
     // Profile
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
+
+    // Track
+    Route::get('/track', [TrackController::class, 'show'])->name('tracks.index');
+    Route::post('/track', [TrackController::class, 'store'])->name('tracks.store');
 });

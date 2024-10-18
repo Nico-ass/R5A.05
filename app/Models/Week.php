@@ -78,7 +78,7 @@ class Week extends Model
      */
     public function scopeLast(Builder $query, int $previousWeeksCount): Builder
     {
-        return $query->whereIn('week_starts_at', 
+        return $query->whereIn('week_starts_at',
             app(WeekService::class)->previous($previousWeeksCount)->map->start()
         );
     }

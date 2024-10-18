@@ -13,7 +13,7 @@ class WeekSeeder extends Seeder
      */
     public function __construct(
         protected WeekService $service
-    ) { 
+    ) {
         //
     }
 
